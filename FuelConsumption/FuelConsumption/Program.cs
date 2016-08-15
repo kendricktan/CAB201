@@ -1,5 +1,9 @@
 ﻿using System;
 
+/* Fuel Calculator class
+*  Has all functions necessary to calculate
+*  fuel efficiency in the class
+*/
 class FuelCalculator
 {
     private double FuelUsed, KilometersTravelled;
@@ -27,6 +31,16 @@ class FuelCalculator
         try
         {
             this.FuelUsed = double.Parse(Console.ReadLine());
+
+            while (this.FuelUsed < 20)
+            {
+                Console.WriteLine("{0} is below the minimum value of 20\n", this.FuelUsed);
+                Console.Write("Please re-enter a number greater than 20: ");
+
+                try { this.FuelUsed = double.Parse(Console.ReadLine()); }
+                catch { Console.WriteLine("\t\tNumber machine only accept numbers...\n"); }
+            }
+
             return true;
         }
         catch
@@ -44,6 +58,16 @@ class FuelCalculator
         try
         {
             this.KilometersTravelled = double.Parse(Console.ReadLine());
+
+            while (this.KilometersTravelled < 200)
+            {
+                Console.WriteLine("{0} is below the minimum value of 200\n", this.KilometersTravelled);
+                Console.Write("Please re-enter a number greater than 200: ");
+
+                try { this.KilometersTravelled = double.Parse(Console.ReadLine()); }
+                catch { Console.WriteLine("\t\tNumber machine only accept numbers...\n"); }
+            }
+
             return true;
         }
         catch
@@ -63,7 +87,7 @@ class FuelCalculator
     public void PrintMuhCalculations()
     {
         Console.WriteLine("\nYour fuel consumption is {0}l/100km\n", this.GetLitresPerHundredKilometer());
-        Console.WriteLine(" which is equivalent to {0}\n\n", this.GetMPG());
+        Console.WriteLine(" which is equivalent to {0}mpg\n\n", this.GetMPG());
     }
 
     // Yum yum i like to eat console inputs
@@ -94,6 +118,13 @@ class FuelCalculator
 
             Console.WriteLine("I don't understand: {0}, please enter either Y/N to continue or quit...\n", s);
         }
+    }
+
+    // Do i really need this????
+    public void ExitGracefulAF()
+    {
+        Console.WriteLine("Press any key to exit");
+        Console.ReadLine();
     }
 }
 
@@ -127,7 +158,10 @@ namespace FuelConsumption
                 // Print calculations!
                 fc.PrintMuhCalculations();
 
-            } while (fc.DoAgainYeah()); // Keep doing calculations until specifically told not to do so
+            } while (fc.DoAgainYeah()); // Keep doing calculations ya numnut
+
+            // Exit Gracefully
+            fc.ExitGracefulAF();
         }
     }
 }
