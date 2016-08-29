@@ -123,9 +123,16 @@ namespace TrainTimetable {
             // Can't have same arrival and departure place n00b
             if (GOING_TO_STATION == LEAVING_FROM_STATION)
             {
-                Console.WriteLine("\nYou have selected {0} as both your departure and arrival station. This enquiry is cancelled", STR_START_STATION);
+                Console.WriteLine("\nYou have selected {0} as both your departure and arrival station, \n\tthis enquiry is cancelled", STR_START_STATION);
                 ExitProgram();
                 return;         
+            }
+
+            else if (GOING_TO_STATION < LEAVING_FROM_STATION)
+            {
+                Console.WriteLine("\nYou cannot travel from {0} to {1}, \n\tthis enquiry is cancelled", STR_START_STATION, STR_END_STATION);
+                ExitProgram();
+                return;
             }
 
             // Which time u wanna be at your end place
