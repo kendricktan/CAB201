@@ -37,7 +37,14 @@ namespace GameWorld
 
         private void CancelGameButton_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            // Pop up message box
+            DialogResult rslt = MessageBox.Show("Do you really want to quit?", "Quit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // If user wants to quit
+            if (rslt == DialogResult.Yes)
+            {
+                this.Visible = false;
+            }        
         }
 
         private void ThrowCoinsButton_Click(object sender, EventArgs e)

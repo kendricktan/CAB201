@@ -41,6 +41,7 @@
             this.ExitButton.TabIndex = 5;
             this.ExitButton.Text = "EXIT";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // label1
             // 
@@ -62,6 +63,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(155, 21);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Which_Dice_Game
             // 
@@ -73,6 +75,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "Which_Dice_Game";
             this.Text = "Which_Dice_Game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Which_Dice_Game_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

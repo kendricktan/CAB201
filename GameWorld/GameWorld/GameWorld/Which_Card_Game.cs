@@ -16,5 +16,23 @@ namespace GameWorld
         {
             InitializeComponent();
         }
+
+        private void Which_Card_Game_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            // Pop up message box
+            DialogResult rslt = MessageBox.Show("Do you really want to quit?", "Quit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // If user wants to quit
+            if (rslt == DialogResult.Yes)
+            {
+                this.Visible = false;
+            }
+        }
     }
 }

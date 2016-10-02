@@ -62,6 +62,7 @@
             this.ExitButton.TabIndex = 2;
             this.ExitButton.Text = "EXIT";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // Which_Card_Game
             // 
@@ -74,6 +75,7 @@
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Which_Card_Game";
             this.Text = "Which_Card_Game";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Which_Card_Game_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

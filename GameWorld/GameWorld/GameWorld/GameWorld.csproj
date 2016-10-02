@@ -112,6 +112,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Snake_Eyes.resx">
+      <DependentUpon>Snake_Eyes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Two_Up.resx">
       <DependentUpon>Two_Up.cs</DependentUpon>
     </EmbeddedResource>
