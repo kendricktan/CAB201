@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWorld", "GameWorld\GameWorld.csproj", "{158B8706-DC48-422A-886C-AB50363E47F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Low Level Objects Library", "Low Level Objects Library\Low Level Objects Library.csproj", "{483B2DC2-65B8-45C5-8275-635EABBCE7FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games Logic Library", "Games Logic Library\Games Logic Library.csproj", "{57730F33-ABFD-4249-A1DE-61607616D296}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{158B8706-DC48-422A-886C-AB50363E47F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{158B8706-DC48-422A-886C-AB50363E47F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{158B8706-DC48-422A-886C-AB50363E47F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483B2DC2-65B8-45C5-8275-635EABBCE7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483B2DC2-65B8-45C5-8275-635EABBCE7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483B2DC2-65B8-45C5-8275-635EABBCE7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483B2DC2-65B8-45C5-8275-635EABBCE7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57730F33-ABFD-4249-A1DE-61607616D296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57730F33-ABFD-4249-A1DE-61607616D296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57730F33-ABFD-4249-A1DE-61607616D296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57730F33-ABFD-4249-A1DE-61607616D296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
