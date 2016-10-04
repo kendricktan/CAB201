@@ -12,6 +12,9 @@ namespace GameWorld
 {
     public partial class Which_Card_Game : Form
     {
+        Twenty_One TwentyOneForm = new Twenty_One();
+        Crazy_Eight CrazyEightForm = new Crazy_Eight();
+
         public Which_Card_Game()
         {
             InitializeComponent();
@@ -32,6 +35,19 @@ namespace GameWorld
             if (rslt == DialogResult.Yes)
             {
                 this.Visible = false;
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox1.SelectedIndex == 0)
+            {
+                this.TwentyOneForm.Show();
+            }
+
+            if (this.comboBox1.SelectedIndex == 1)
+            {
+                this.CrazyEightForm.Show();
             }
         }
     }

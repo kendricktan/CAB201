@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Low_Level_Objects_Library;
 
-namespace GameWorld {
+namespace GameWorld
+{
     /// <summary>
     /// Provides easy access to the coin and card images, 
     /// via the GetCoinImage, GetCardImage and GetBackOfCardImage methods.
@@ -20,12 +22,11 @@ namespace GameWorld {
         private static Bitmap heads;
         private static Bitmap tails;
 
-//        private static Bitmap backOfCardImage;
-//        private static Bitmap[,] cardImages;
+        private static Bitmap backOfCardImage;
+        private static Bitmap[,] cardImages;
 
         private static Bitmap[] dieImages;
-
-
+        
         /// <summary>
         /// Constructor - Loads images from disk files.
         /// </summary>
@@ -33,7 +34,7 @@ namespace GameWorld {
             // Load coin images.
             heads = LoadImage("Coins", "Heads150");
             tails = LoadImage("Coins", "Tails150");
-/*
+
             // Load card images.
             backOfCardImage = Images.LoadImage("Cards", "CardBack_Red");
             cardImages = new Bitmap[CardPile.NUM_SUITS, CardPile.NUM_CARDS_PER_SUIT];
@@ -46,7 +47,7 @@ namespace GameWorld {
                 }
             } //end for ( Suit suit ...
 
-*/
+
             //Load die images
             dieImages = new Bitmap[7];
 
@@ -70,7 +71,7 @@ namespace GameWorld {
                 return tails;
             }
         }
-/*
+
         /// <summary>
         /// Returns the image for a given Card.
         /// </summary>
@@ -88,12 +89,12 @@ namespace GameWorld {
         public static Bitmap GetBackOfCardImage() {
             return backOfCardImage;
         }
-*/
+
         public static Bitmap GetDieImage(int faceValue) {
             return dieImages[faceValue];
         }
 
-/*
+
         /// <summary>
         /// Used by the constructor in this class only.  Do NOT use elsewhere.
         /// </summary>
@@ -102,7 +103,7 @@ namespace GameWorld {
             FaceValue faceValue = card.GetFaceValue();
             return string.Format("{0}{1}", suit.ToString().TrimEnd('s'), faceValue);
         }
-*/
+
 
         /// <summary>
         /// Used by the constructor in this class only.  Do NOT use elsewhere.

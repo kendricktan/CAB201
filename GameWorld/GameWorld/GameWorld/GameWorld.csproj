@@ -36,6 +36,10 @@
     <Reference Include="Games Logic Library">
       <HintPath>..\Games Logic Library\bin\Debug\Games Logic Library.dll</HintPath>
     </Reference>
+    <Reference Include="Low Level Objects Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Games Logic Library\bin\Debug\Low Level Objects Library.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,11 +80,11 @@
     <Compile Include="Snake_Eyes.Designer.cs">
       <DependentUpon>Snake_Eyes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Twnty_One.cs">
+    <Compile Include="Twenty_One.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Twnty_One.Designer.cs">
-      <DependentUpon>Twnty_One.cs</DependentUpon>
+    <Compile Include="Twenty_One.Designer.cs">
+      <DependentUpon>Twenty_One.cs</DependentUpon>
     </Compile>
     <Compile Include="Two_Up.cs">
       <SubType>Form</SubType>
@@ -114,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="Snake_Eyes.resx">
       <DependentUpon>Snake_Eyes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Twenty_One.resx">
+      <DependentUpon>Twenty_One.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Two_Up.resx">
       <DependentUpon>Two_Up.cs</DependentUpon>
