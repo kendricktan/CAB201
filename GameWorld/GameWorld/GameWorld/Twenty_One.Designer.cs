@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dealerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DealerBustedLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DealerPointsLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,12 +39,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.PlayerPointsLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.PlayerBustedLabel = new System.Windows.Forms.Label();
             this.dealButton = new System.Windows.Forms.Button();
             this.hitButton = new System.Windows.Forms.Button();
             this.standButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.testButton = new System.Windows.Forms.Button();
+            this.AceValueOneLabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dealerTableLayoutPanel
@@ -67,16 +69,17 @@
             this.dealerTableLayoutPanel.Size = new System.Drawing.Size(580, 100);
             this.dealerTableLayoutPanel.TabIndex = 0;
             // 
-            // label1
+            // DealerBustedLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(132, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "BUSTED";
+            this.DealerBustedLabel.AutoSize = true;
+            this.DealerBustedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DealerBustedLabel.ForeColor = System.Drawing.Color.Red;
+            this.DealerBustedLabel.Location = new System.Drawing.Point(132, 28);
+            this.DealerBustedLabel.Name = "DealerBustedLabel";
+            this.DealerBustedLabel.Size = new System.Drawing.Size(91, 24);
+            this.DealerBustedLabel.TabIndex = 1;
+            this.DealerBustedLabel.Text = "BUSTED";
+            this.DealerBustedLabel.Visible = false;
             // 
             // label2
             // 
@@ -180,20 +183,21 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Player";
             // 
-            // label10
+            // PlayerBustedLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(132, 326);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 24);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "BUSTED";
+            this.PlayerBustedLabel.AutoSize = true;
+            this.PlayerBustedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerBustedLabel.ForeColor = System.Drawing.Color.Red;
+            this.PlayerBustedLabel.Location = new System.Drawing.Point(132, 326);
+            this.PlayerBustedLabel.Name = "PlayerBustedLabel";
+            this.PlayerBustedLabel.Size = new System.Drawing.Size(91, 24);
+            this.PlayerBustedLabel.TabIndex = 7;
+            this.PlayerBustedLabel.Text = "BUSTED";
+            this.PlayerBustedLabel.Visible = false;
             // 
             // dealButton
             // 
-            this.dealButton.Location = new System.Drawing.Point(12, 378);
+            this.dealButton.Location = new System.Drawing.Point(12, 387);
             this.dealButton.Name = "dealButton";
             this.dealButton.Size = new System.Drawing.Size(75, 23);
             this.dealButton.TabIndex = 12;
@@ -203,30 +207,33 @@
             // 
             // hitButton
             // 
-            this.hitButton.Location = new System.Drawing.Point(113, 378);
+            this.hitButton.Location = new System.Drawing.Point(113, 387);
             this.hitButton.Name = "hitButton";
             this.hitButton.Size = new System.Drawing.Size(75, 23);
             this.hitButton.TabIndex = 13;
             this.hitButton.Text = "Hit";
             this.hitButton.UseVisualStyleBackColor = true;
+            this.hitButton.Click += new System.EventHandler(this.hitButton_Click);
             // 
             // standButton
             // 
-            this.standButton.Location = new System.Drawing.Point(220, 378);
+            this.standButton.Location = new System.Drawing.Point(220, 387);
             this.standButton.Name = "standButton";
             this.standButton.Size = new System.Drawing.Size(75, 23);
             this.standButton.TabIndex = 14;
             this.standButton.Text = "Stand";
             this.standButton.UseVisualStyleBackColor = true;
+            this.standButton.Click += new System.EventHandler(this.standButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(328, 378);
+            this.cancelButton.Location = new System.Drawing.Point(328, 387);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(121, 23);
             this.cancelButton.TabIndex = 15;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "Cancel Game";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // testButton
             // 
@@ -236,13 +243,35 @@
             this.testButton.TabIndex = 16;
             this.testButton.Text = "Test";
             this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Visible = false;
             this.testButton.Click += new System.EventHandler(this.testButton_Click);
+            // 
+            // AceValueOneLabel
+            // 
+            this.AceValueOneLabel.AutoSize = true;
+            this.AceValueOneLabel.BackColor = System.Drawing.Color.White;
+            this.AceValueOneLabel.Location = new System.Drawing.Point(217, 362);
+            this.AceValueOneLabel.Name = "AceValueOneLabel";
+            this.AceValueOneLabel.Size = new System.Drawing.Size(13, 13);
+            this.AceValueOneLabel.TabIndex = 17;
+            this.AceValueOneLabel.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(236, 362);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Aces with value 1";
             // 
             // Twenty_One
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 421);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.AceValueOneLabel);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.standButton);
@@ -252,16 +281,18 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.PlayerPointsLabel);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.PlayerBustedLabel);
             this.Controls.Add(this.playerTableLayoutPanel);
             this.Controls.Add(this.DealerGamesWonLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DealerPointsLabel);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DealerBustedLabel);
             this.Controls.Add(this.dealerTableLayoutPanel);
             this.Name = "Twenty_One";
             this.Text = "Twenty One";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Twenty_One_FormClosing);
+            this.Load += new System.EventHandler(this.Twenty_One_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,7 +301,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel dealerTableLayoutPanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DealerBustedLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label DealerPointsLabel;
         private System.Windows.Forms.Label label4;
@@ -280,11 +311,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label PlayerPointsLabel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label PlayerBustedLabel;
         private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Button hitButton;
         private System.Windows.Forms.Button standButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button testButton;
+        private System.Windows.Forms.Label AceValueOneLabel;
+        private System.Windows.Forms.Label label5;
     }
 }

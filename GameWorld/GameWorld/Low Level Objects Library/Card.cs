@@ -4,8 +4,8 @@ namespace Low_Level_Objects_Library {
     public enum Suit { Clubs, Diamonds, Hearts, Spades }
 
     public enum FaceValue {
-        Two, Three, Four, Five, Six, Seven, Eight, Nine,
-        Ten, Jack, Queen, King, Ace
+        Two=2, Three, Four, Five, Six, Seven, Eight, Nine,
+        Ten, Jack=10, Queen=10, King=10, Ace
     }
 
     /// <summary>
