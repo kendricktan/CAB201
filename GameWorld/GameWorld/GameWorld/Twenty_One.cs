@@ -115,7 +115,7 @@ namespace GameWorld
                     if (temp_ace == 0)
                     {
                         // Pop up message box
-                        DialogResult rslt = MessageBox.Show("Count Aces as 1?", null, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult rslt = MessageBox.Show("Count Aces as 1?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         // If user wants to quit
                         if (rslt == DialogResult.Yes)

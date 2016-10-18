@@ -52,6 +52,10 @@ namespace GameWorld
             // Toss coins
             Two_Up_Game.TossCoins();
 
+            // Update pictures
+            UpdatePictureBoxImage(pictureBox1, Two_Up_Game.IsHeads(1));
+            UpdatePictureBoxImage(pictureBox2, Two_Up_Game.IsHeads(2));
+
             // Get result
             string result = Two_Up_Game.TossOutCome();
             this.OutcomeLabel.Text = result;
@@ -65,14 +69,14 @@ namespace GameWorld
             {
                 this.ThrowCoinsButton.Enabled = false;
                 this.PlayAgainButton.Visible = true;
-            }
+            }            
         }
 
         // Play again
         private void PlayAgainButton_Click(object sender, EventArgs e)
         {
             this.ThrowCoinsButton.Enabled = true;
-            this.PlayAgainButton.Visible = false;
+            this.PlayAgainButton.Visible = false;            
         }
     }
 }

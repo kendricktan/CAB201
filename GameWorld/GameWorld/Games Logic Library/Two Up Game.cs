@@ -35,7 +35,7 @@ namespace Games_Logic_Library
                 playersScore += 1;
                 return "Heads";
             }
-            else if (!coin1.IsHeads() && coin2.IsHeads())
+            else if (!coin1.IsHeads() && !coin2.IsHeads())
             {
                 computersScore += 1;
                 return "Tails";
