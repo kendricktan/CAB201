@@ -14,15 +14,23 @@ namespace GameWorld
 {
     public partial class Crazy_Eight : Form
     {
+        private Form chooseSuitForm;
         private CardPile Cardpile;
         private Hand PileHand;
         private Hand PlayerHand;
-        private Hand ComputerHand;        
+        private Hand ComputerHand;
+        private bool UseCustomSuitValue = false;
+        public Suit CustomSuitValue;
 
         public Crazy_Eight()
         {
             InitializeComponent();
 
+            this.drawPilePictureBox.Image = Images.GetBackOfCardImage();
+
+            this.statusLabel.Text = "Click Deal to start the game.";
+
+            chooseSuitForm = new ChooseSuitForm(this);
         }
 
         private void DisplayGuiHand(Hand hand, TableLayoutPanel tableLayoutPanel, int who)
@@ -61,16 +69,92 @@ namespace GameWorld
             PictureBox cpb = (PictureBox)sender;
             Card cc = (Card)cpb.Tag;
 
-            TryToPlayCard(cc);
+            TryToPlayCard(cc);        
+            
+            if (this.PlayerHand.GetCount() == 0)
+            {
+                this.statusLabel.Text = "You won! Congratluations!";
+                this.dealButton.Enabled = true;
+                this.sortCardButton.Enabled = false;
+            }      
+            else if (this.ComputerHand.GetCount() == 0)
+            {
+                this.statusLabel.Text = "Better luck next time!";
+                this.dealButton.Enabled = true;
+                this.sortCardButton.Enabled = false;
+            }          
         }
 
         private void TryToPlayCard(Card clickedCard)
         {
+            // Crazy eight
+            if (clickedCard.GetFaceValue() == FaceValue.Eight)
+            {
+                this.chooseSuitForm.Visible = true;
+                this.chooseSuitForm.Show();                
+
+                this.PlayerHand.Remove(clickedCard);
+                this.PileHand.Add(clickedCard);
+                this.updatePileHandPicture();
+                DisplayGuiHand(this.PlayerHand, this.tableLayoutPanel2, 2);
+
+                this.UseCustomSuitValue = true;
+            }
             // Can play if card values are the same
-            if (clickedCard.GetFaceValue() == this.PileHand.GetCard(this.PileHand.GetCount() - 1).GetFaceValue()
-                || clickedCard.GetSuit() == this.PileHand.GetCard(this.PileHand.GetCount() - 1).GetSuit())
+            else if (clickedCard.GetFaceValue() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetFaceValue()
+                || (!UseCustomSuitValue && clickedCard.GetSuit() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetSuit())
+                || (UseCustomSuitValue && clickedCard.GetSuit() == this.CustomSuitValue))
             {
                 this.PlayerHand.Remove(clickedCard);
+                this.PileHand.Add(clickedCard);
+                this.updatePileHandPicture();
+                DisplayGuiHand(this.PlayerHand, this.tableLayoutPanel2, 2);
+
+                // Played cards, so custom suit value is no more
+                this.UseCustomSuitValue = false;
+
+                // Computer's turn
+                this.ComputerPlay();
+            }            
+            else
+            {
+                this.statusLabel.Text = "Can't play that card now.";
+            }
+        }
+
+        // Computer Playing
+        public void ComputerPlay()
+        {
+            while (!CanComputerPlay())
+            {
+                this.ComputerHand.Add(this.Cardpile.DealOneCard());
+            }
+
+            // Just plays the first card            
+            foreach (Card c in this.ComputerHand)
+            {
+                if ((!UseCustomSuitValue && c.GetSuit() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetSuit()) ||
+                    (UseCustomSuitValue && c.GetSuit() == this.CustomSuitValue) ||
+                    c.GetFaceValue() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetFaceValue() ||
+                    c.GetFaceValue() == FaceValue.Eight)
+                {
+                    this.ComputerHand.Remove(c);
+                    this.PileHand.Add(c);
+                    this.updatePileHandPicture();
+                    DisplayGuiHand(this.ComputerHand, this.tableLayoutPanel1, 1);
+
+                    UseCustomSuitValue = false;
+                    break;
+                }
+            }
+
+            // Output text
+            this.statusLabel.Text = "Your turn. Click on one of your cards to play.";
+
+            // Checks if user can play
+            if (!CanPlayerPlay())
+            {
+                this.statusLabel.Text = "You have no cards that you can play. You must draw a card.";
             }
         }
 
@@ -98,10 +182,120 @@ namespace GameWorld
             DisplayGuiHand(this.ComputerHand, this.tableLayoutPanel1, 1);
             DisplayGuiHand(this.PlayerHand, this.tableLayoutPanel2, 2);
 
-            // Get last iamge 
-            this.pileHandPictureBox.Image = Images.GetCardImage(this.PileHand.GetCard(this.PileHand.GetCount() - 1));
+            // Update pile iamges 
+            this.updatePileHandPicture();            
 
             this.dealButton.Enabled = false;
+            this.sortCardButton.Enabled = true;
+
+            // Update status label
+            this.statusLabel.Text = "Your turn. Click on one of your cards to play.";
+        }
+
+        // Update pile hand image
+        private void updatePileHandPicture()
+        {
+            this.pileHandPictureBox.Image = Images.GetCardImage(this.PileHand.GetCard(this.PileHand.GetCount() - 1));
+        }
+
+        // Sort play's card
+        private void sortCardButton_Click(object sender, EventArgs e)
+        {
+            if (this.PlayerHand != null)
+            {
+                this.PlayerHand.Sort();
+                DisplayGuiHand(this.PlayerHand, this.tableLayoutPanel2, 2);
+            }
+        }
+
+        // Get New card
+        private void drawPilePictureBox_Click(object sender, EventArgs e)
+        {
+            // If card pile is not none
+            if (this.Cardpile != null)
+            {
+                if (this.CanPlayerPlay())
+                {
+                    this.statusLabel.Text = "Cannot draw now. You have at least one card you can play.";
+                }
+                else
+                {
+                    // Add it to player's hand and update GUI
+                    this.PlayerHand.Add(this.Cardpile.DealCards(1)[0]);
+                    DisplayGuiHand(this.PlayerHand, this.tableLayoutPanel2, 2);
+
+                    if (this.CanPlayerPlay())
+                    {
+                        this.statusLabel.Text = "Your turn. Click on one of your cards to play.";
+                    }
+                    else
+                    {
+                        this.statusLabel.Text = "You have no cards that you can play. You must draw a card.";
+                    }
+                }
+            }
+        }
+
+        // Prevent form from closing
+        private void Crazy_Eight_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            // Pop up message box
+            DialogResult rslt = MessageBox.Show("Do you really want to quit?", "Quit?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // If user wants to quit
+            if (rslt == DialogResult.Yes)
+            {                
+                this.Close();
+            }
+        }
+
+        // Can Player play
+        private bool CanPlayerPlay()
+        {
+            // If player has a playable card, then play on
+            foreach (Card c in this.PlayerHand)
+            {
+                if ((!UseCustomSuitValue && c.GetSuit() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetSuit()) ||
+                    (UseCustomSuitValue && c.GetSuit() == this.CustomSuitValue) ||
+                    c.GetFaceValue() == PileHand.GetCard(this.PileHand.GetCount() -1).GetFaceValue() || 
+                    c.GetFaceValue() == FaceValue.Eight)
+                {                    
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Can computer play
+        private bool CanComputerPlay()
+        {
+            // If player has a playable card, then play on
+            foreach (Card c in this.ComputerHand)
+            {
+                if ((!UseCustomSuitValue && c.GetSuit() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetSuit()) ||
+                    (UseCustomSuitValue && c.GetSuit() == this.CustomSuitValue) ||
+                    c.GetFaceValue() == PileHand.GetCard(this.PileHand.GetCount() - 1).GetFaceValue() ||
+                    c.GetFaceValue() == FaceValue.Eight)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Can't focus if suit form is visible
+        private void statusLabel_Enter(object sender, EventArgs e)
+        {
+            if (!this.chooseSuitForm.Visible)
+            {
+                this.chooseSuitForm.Focus();
+            }
         }
     }
 }

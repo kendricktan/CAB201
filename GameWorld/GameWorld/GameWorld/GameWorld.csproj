@@ -59,6 +59,12 @@
     <Compile Include="Crazy_Eight.Designer.cs">
       <DependentUpon>Crazy_Eight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crazy_Eight_Select.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crazy_Eight_Select.Designer.cs">
+      <DependentUpon>Crazy_Eight_Select.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </Compile>
     <EmbeddedResource Include="Crazy_Eight.resx">
       <DependentUpon>Crazy_Eight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crazy_Eight_Select.resx">
+      <DependentUpon>Crazy_Eight_Select.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

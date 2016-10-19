@@ -32,13 +32,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.drawPilePictureBox = new System.Windows.Forms.PictureBox();
             this.pileHandPictureBox = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.dealButton = new System.Windows.Forms.Button();
             this.sortCardButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawPilePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,13 +110,14 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 95);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // pictureBox1
+            // drawPilePictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(188, 151);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(70, 95);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.drawPilePictureBox.Location = new System.Drawing.Point(188, 151);
+            this.drawPilePictureBox.Name = "drawPilePictureBox";
+            this.drawPilePictureBox.Size = new System.Drawing.Size(70, 95);
+            this.drawPilePictureBox.TabIndex = 4;
+            this.drawPilePictureBox.TabStop = false;
+            this.drawPilePictureBox.Click += new System.EventHandler(this.drawPilePictureBox_Click);
             // 
             // pileHandPictureBox
             // 
@@ -126,16 +127,17 @@
             this.pileHandPictureBox.TabIndex = 5;
             this.pileHandPictureBox.TabStop = false;
             // 
-            // label3
+            // statusLabel
             // 
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(392, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 42);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "                                        \r\n                                       " +
+            this.statusLabel.BackColor = System.Drawing.Color.White;
+            this.statusLabel.Location = new System.Drawing.Point(392, 177);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(180, 40);
+            this.statusLabel.TabIndex = 6;
+            this.statusLabel.Text = "                                        \r\n                                       " +
     " \r\n                                        \r\n                                   " +
     "     \r\n\r\n\r\n\r\n";
+            this.statusLabel.Enter += new System.EventHandler(this.statusLabel_Enter);
             // 
             // dealButton
             // 
@@ -155,6 +157,7 @@
             this.sortCardButton.TabIndex = 8;
             this.sortCardButton.Text = "Sort Player\'s Cards";
             this.sortCardButton.UseVisualStyleBackColor = true;
+            this.sortCardButton.Click += new System.EventHandler(this.sortCardButton_Click);
             // 
             // cancelButton
             // 
@@ -164,6 +167,7 @@
             this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "Cancel Game";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // Crazy_Eight
             // 
@@ -174,9 +178,9 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.sortCardButton);
             this.Controls.Add(this.dealButton);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.pileHandPictureBox);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.drawPilePictureBox);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label2);
@@ -186,7 +190,8 @@
             this.MinimizeBox = false;
             this.Name = "Crazy_Eight";
             this.Text = "Crazy_Eight";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Crazy_Eight_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.drawPilePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,9 +204,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox drawPilePictureBox;
         private System.Windows.Forms.PictureBox pileHandPictureBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Button sortCardButton;
         private System.Windows.Forms.Button cancelButton;
