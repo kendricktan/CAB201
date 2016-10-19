@@ -33,13 +33,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pileHandPictureBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dealButton = new System.Windows.Forms.Button();
+            this.sortCardButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,6 +64,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 13;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
@@ -87,6 +88,7 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 13;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
@@ -116,13 +118,13 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // pileHandPictureBox
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(286, 151);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(70, 95);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.pileHandPictureBox.Location = new System.Drawing.Point(286, 151);
+            this.pileHandPictureBox.Name = "pileHandPictureBox";
+            this.pileHandPictureBox.Size = new System.Drawing.Size(70, 95);
+            this.pileHandPictureBox.TabIndex = 5;
+            this.pileHandPictureBox.TabStop = false;
             // 
             // label3
             // 
@@ -135,32 +137,33 @@
     " \r\n                                        \r\n                                   " +
     "     \r\n\r\n\r\n\r\n";
             // 
-            // button1
+            // dealButton
             // 
-            this.button1.Location = new System.Drawing.Point(66, 397);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Deal";
-            this.button1.UseVisualStyleBackColor = true;
+            this.dealButton.Location = new System.Drawing.Point(66, 397);
+            this.dealButton.Name = "dealButton";
+            this.dealButton.Size = new System.Drawing.Size(75, 23);
+            this.dealButton.TabIndex = 7;
+            this.dealButton.Text = "Deal";
+            this.dealButton.UseVisualStyleBackColor = true;
+            this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
-            // button2
+            // sortCardButton
             // 
-            this.button2.Location = new System.Drawing.Point(232, 414);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Sort Player\'s Cards";
-            this.button2.UseVisualStyleBackColor = true;
+            this.sortCardButton.Location = new System.Drawing.Point(232, 414);
+            this.sortCardButton.Name = "sortCardButton";
+            this.sortCardButton.Size = new System.Drawing.Size(124, 23);
+            this.sortCardButton.TabIndex = 8;
+            this.sortCardButton.Text = "Sort Player\'s Cards";
+            this.sortCardButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // cancelButton
             // 
-            this.button3.Location = new System.Drawing.Point(454, 397);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Cancel Game";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cancelButton.Location = new System.Drawing.Point(454, 397);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 9;
+            this.cancelButton.Text = "Cancel Game";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // Crazy_Eight
             // 
@@ -168,11 +171,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(604, 461);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.sortCardButton);
+            this.Controls.Add(this.dealButton);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pileHandPictureBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -184,7 +187,7 @@
             this.Name = "Crazy_Eight";
             this.Text = "Crazy_Eight";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,10 +200,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pileHandPictureBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button dealButton;
+        private System.Windows.Forms.Button sortCardButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
