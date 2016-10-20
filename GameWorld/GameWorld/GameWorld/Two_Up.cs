@@ -13,6 +13,9 @@ namespace GameWorld
 {
     public partial class Two_Up : Form
     {
+        // How many times has the timer ticked
+        private int TIMER_TICK_TIME = 0;
+
         public Two_Up()
         {
             InitializeComponent();
@@ -52,24 +55,11 @@ namespace GameWorld
             // Toss coins
             Two_Up_Game.TossCoins();
 
-            // Update pictures
-            UpdatePictureBoxImage(pictureBox1, Two_Up_Game.IsHeads(1));
-            UpdatePictureBoxImage(pictureBox2, Two_Up_Game.IsHeads(2));
+            // Disable button
+            this.ThrowCoinsButton.Enabled = false;
 
-            // Get result
-            string result = Two_Up_Game.TossOutCome();
-            this.OutcomeLabel.Text = result;
-
-            // Scoring
-            this.PlayerScoreLabel.Text = Two_Up_Game.GetPlayersScore().ToString();
-            this.ComputerScoreLabel.Text = Two_Up_Game.GetComputersScore().ToString();
-
-            // Determine next step
-            if (result == "Heads" || result == "Tails")
-            {
-                this.ThrowCoinsButton.Enabled = false;
-                this.PlayAgainButton.Visible = true;
-            }            
+            // Call timer
+            this.timer1.Enabled = true;                     
         }
 
         // Play again
@@ -77,6 +67,52 @@ namespace GameWorld
         {
             this.ThrowCoinsButton.Enabled = true;
             this.PlayAgainButton.Visible = false;            
+        }
+
+        // Timers brah
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TIMER_TICK_TIME += 1;
+            if (TIMER_TICK_TIME >= 10)
+            {
+                this.ThrowCoinsButton.Enabled = true;
+                this.timer1.Enabled = false;
+
+                // Update pictures
+                UpdatePictureBoxImage(pictureBox1, Two_Up_Game.IsHeads(1));
+                UpdatePictureBoxImage(pictureBox2, Two_Up_Game.IsHeads(2));
+
+                // Get result
+                string result = Two_Up_Game.TossOutCome();
+                this.OutcomeLabel.Text = result;
+
+                // Scoring
+                this.PlayerScoreLabel.Text = Two_Up_Game.GetPlayersScore().ToString();
+                this.ComputerScoreLabel.Text = Two_Up_Game.GetComputersScore().ToString();
+
+                // Determine next step
+                if (result == "Heads" || result == "Tails")
+                {
+                    this.ThrowCoinsButton.Enabled = false;
+                    this.PlayAgainButton.Visible = true;
+                }
+
+                TIMER_TICK_TIME = 0;
+            }
+            else
+            {
+                // Animation
+                if (TIMER_TICK_TIME % 2 == 0)
+                {
+                    UpdatePictureBoxImage(pictureBox1, Two_Up_Game.IsHeads(1));
+                    UpdatePictureBoxImage(pictureBox2, Two_Up_Game.IsHeads(2));
+                }
+                else
+                {
+                    UpdatePictureBoxImage(pictureBox1, !Two_Up_Game.IsHeads(1));
+                    UpdatePictureBoxImage(pictureBox2, !Two_Up_Game.IsHeads(2));
+                }
+            }
         }
     }
 }

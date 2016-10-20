@@ -128,6 +128,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ship_Captain_Crew.resx">
+      <DependentUpon>Ship_Captain_Crew.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Snake_Eyes.resx">
       <DependentUpon>Snake_Eyes.cs</DependentUpon>
     </EmbeddedResource>

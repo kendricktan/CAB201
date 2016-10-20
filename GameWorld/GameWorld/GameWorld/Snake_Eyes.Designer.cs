@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.StatusLabel = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             this.HouseScoreLabel = new System.Windows.Forms.Label();
             this.ContPlayingButton = new System.Windows.Forms.Button();
             this.CancelGameButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -149,6 +152,14 @@
             this.CancelGameButton.UseVisualStyleBackColor = true;
             this.CancelGameButton.Click += new System.EventHandler(this.CancelGameButton_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Snake_Eyes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,5 +200,7 @@
         private System.Windows.Forms.Label HouseScoreLabel;
         private System.Windows.Forms.Button ContPlayingButton;
         private System.Windows.Forms.Button CancelGameButton;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

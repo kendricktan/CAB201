@@ -16,5 +16,11 @@ namespace GameWorld
         {
             InitializeComponent();
         }
+
+        private void Ship_Captain_Crew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.PlayerLabel = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.ThrowCoinsButton = new System.Windows.Forms.Button();
             this.PlayAgainButton = new System.Windows.Forms.Button();
             this.CancelGameButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +138,10 @@
             this.CancelGameButton.UseVisualStyleBackColor = true;
             this.CancelGameButton.Click += new System.EventHandler(this.CancelGameButton_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Two_Up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,5 +180,6 @@
         private System.Windows.Forms.Button ThrowCoinsButton;
         private System.Windows.Forms.Button PlayAgainButton;
         private System.Windows.Forms.Button CancelGameButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
