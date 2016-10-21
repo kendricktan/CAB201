@@ -146,6 +146,7 @@
     <EmbeddedResource Include="Which_Dice_Game.resx">
       <DependentUpon>Which_Dice_Game.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
